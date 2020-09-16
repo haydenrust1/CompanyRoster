@@ -12,44 +12,161 @@ const render = require("./lib/htmlRenderer");
 
 const questions = [
     {
+        type: 'input',
+        message: 'Please give Manager Name',
+        name: 'managerName',
+        validate: function(answer) {
+            if (answer !== '') {
+                return true;
+            }
 
+            return 'name required'
+        }
     },
     {
+        type: 'input',
+        message: 'Please give Manager id',
+        name: 'managerId',
+        validate: function(answer) {
+            if (answer !== '') {
+                return true;
+            }
 
+            return 'id required'
+        }
     },
     {
+        type: 'input',
+        message: 'Please give Manager email',
+        name: 'managerEmail',
+        validate: function(answer) {
+            if (answer !== '') {
+                return true;
+            }
 
+            return 'email required'
+        }
     },
     {
+        type: 'input',
+        message: 'Please give Manager office number',
+        name: 'managerNumber',
+        validate: function(answer) {
+            if (answer !== '') {
+                return true;
+            }
 
+            return 'number required'
+        }
     },
     {
+        type: 'input',
+        message: 'Please give Manager Name',
+        name: 'managerName',
+        validate: function(answer) {
+            if (answer !== '') {
+                return true;
+            }
 
+            return 'this section is required'
+        }
     },
     {
+        type: 'input',
+        message: 'Please give Manager Name',
+        name: 'managerName',
+        validate: function(answer) {
+            if (answer !== '') {
+                return true;
+            }
 
+            return 'this section is required'
+        }
     },
     {
+        type: 'input',
+        message: 'Please give Manager Name',
+        name: 'managerName',
+        validate: function(answer) {
+            if (answer !== '') {
+                return true;
+            }
 
+            return 'this section is required'
+        }
     },
     {
+        type: 'input',
+        message: 'Please give Manager Name',
+        name: 'managerName',
+        validate: function(answer) {
+            if (answer !== '') {
+                return true;
+            }
 
+            return 'this section is required'
+        }
     },
     {
+        type: 'input',
+        message: 'Please give Manager Name',
+        name: 'managerName',
+        validate: function(answer) {
+            if (answer !== '') {
+                return true;
+            }
 
+            return 'this section is required'
+        }
     },
     {
+        type: 'input',
+        message: 'Please give Manager Name',
+        name: 'managerName',
+        validate: function(answer) {
+            if (answer !== '') {
+                return true;
+            }
 
+            return 'this section is required'
+        }
     },
     {
+        type: 'input',
+        message: 'Please give Manager Name',
+        name: 'managerName',
+        validate: function(answer) {
+            if (answer !== '') {
+                return true;
+            }
 
+            return 'this section is required'
+        }
     },
 ]
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
-inquirer.prompt(questions)
-.then((response) => {
+inquirer
+.prompt(questions)
+.then(response => {
     console.log(response);
+
+    const manager = new Manager(response.managerName, response.managerId,response.email, response.officeNumber);
+
+    const engineer = new Engineer(response.managerName, response.managerId,response.email, response.officeNumber);
+    
+    const intern = new Intern(response.managerName, response.managerId,response.email, response.officeNumber);
+
+
+    let rendered = render([manager,engineer, intern]);
+
+    fs.writeFile('team.html', rendered, () => {
+        if (err) {
+            console.log('error!');
+            console.log(err);
+        }
+        return console.log('successfully wrote file!');
+    })
 })
 
 // After the user has input all employees desired, call the `render` function (required
