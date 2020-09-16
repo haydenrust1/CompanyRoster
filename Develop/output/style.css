@@ -1,0 +1,13 @@
+.team-heading {
+    background-color: rgb(70, 70, 70);
+    color: white;
+}
+
+.employee-card {
+    margin: 10px;
+}
+.card-header {
+    clip-path: polygon(0 0, 100% 0%, 100% 83%, 0% 98%);
+    background: linear-gradient(to right bottom, #7dd56f, #28b487);
+    color: white;
+}

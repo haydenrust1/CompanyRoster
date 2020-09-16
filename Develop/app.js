@@ -61,8 +61,8 @@ const questions = [
     },
     {
         type: 'input',
-        message: 'Please give Manager Name',
-        name: 'managerName',
+        message: 'Please give Engineer Name',
+        name: 'engineerName',
         validate: function(answer) {
             if (answer !== '') {
                 return true;
@@ -73,8 +73,8 @@ const questions = [
     },
     {
         type: 'input',
-        message: 'Please give Manager Name',
-        name: 'managerName',
+        message: 'Please give Engineer id',
+        name: 'engineerId',
         validate: function(answer) {
             if (answer !== '') {
                 return true;
@@ -85,8 +85,8 @@ const questions = [
     },
     {
         type: 'input',
-        message: 'Please give Manager Name',
-        name: 'managerName',
+        message: 'Please give Engineer email',
+        name: 'engineerEmail',
         validate: function(answer) {
             if (answer !== '') {
                 return true;
@@ -97,8 +97,8 @@ const questions = [
     },
     {
         type: 'input',
-        message: 'Please give Manager Name',
-        name: 'managerName',
+        message: 'Please give Engineer Github username',
+        name: 'engineerGithub',
         validate: function(answer) {
             if (answer !== '') {
                 return true;
@@ -109,8 +109,8 @@ const questions = [
     },
     {
         type: 'input',
-        message: 'Please give Manager Name',
-        name: 'managerName',
+        message: 'Please give Intern Name',
+        name: 'interName',
         validate: function(answer) {
             if (answer !== '') {
                 return true;
@@ -121,8 +121,8 @@ const questions = [
     },
     {
         type: 'input',
-        message: 'Please give Manager Name',
-        name: 'managerName',
+        message: 'Please give Intern id',
+        name: 'internId',
         validate: function(answer) {
             if (answer !== '') {
                 return true;
@@ -133,8 +133,8 @@ const questions = [
     },
     {
         type: 'input',
-        message: 'Please give Manager Name',
-        name: 'managerName',
+        message: 'Please give Intern email',
+        name: 'internEmail',
         validate: function(answer) {
             if (answer !== '') {
                 return true;
@@ -143,6 +143,19 @@ const questions = [
             return 'this section is required'
         }
     },
+    {
+        type: 'input',
+        message: 'Please give Intern"s school',
+        name: 'internSchool',
+        validate: function(answer) {
+            if (answer !== '') {
+                return true;
+            }
+
+            return 'this section is required'
+        }
+    },
+
 ]
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
@@ -151,21 +164,21 @@ inquirer
 .then(response => {
     console.log(response);
 
-    const manager = new Manager(response.managerName, response.managerId,response.email, response.officeNumber);
+    const manager = new Manager(response.managerName, response.managerId, response.managerEmail, response.managerNumber);
 
-    const engineer = new Engineer(response.managerName, response.managerId,response.email, response.officeNumber);
+    const engineer = new Engineer(response.engineerName, response.engineerId, response.engineerEmail, response.engineerGithub);
     
-    const intern = new Intern(response.managerName, response.managerId,response.email, response.officeNumber);
+    const intern = new Intern(response.internName, response.internId,response.internEmail, response.internSchool);
 
 
     let rendered = render([manager,engineer, intern]);
 
-    fs.writeFile('team.html', rendered, () => {
+    fs.writeFile('./output/team.html', rendered, (err) => {
         if (err) {
-            console.log('error!');
-            console.log(err);
-        }
-        return console.log('successfully wrote file!');
+            return console.log(err);
+          }
+        
+          console.log("Success!");
     })
 })
 
