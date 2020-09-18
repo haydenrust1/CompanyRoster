@@ -23,7 +23,7 @@
   * This project is licensed under: MIT
 
   ## Contributing
-  * Contributions are not being accepted at this time.
+  * This application follows the [Contributor Covenant](https://www.contributor-covenant.org/).  Follow the link in order to find out more.
 
   ## Tests
   * This application includes tests to ensure that the class constructors are built appropiately.  To run these tests, one must simply run 'npm run test' in the CL!
