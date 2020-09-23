@@ -14,10 +14,11 @@
   * [Tests](#tests)
   
   ## Installation
-  * ![Instructional Gif]()
 
   ## Usage
   * The Company Roster application allows the user to render an HTML document that displays a software engineering team raster
+ ![Instructional Gif](./Instructional.gif)
+
 
   ## License
   * This project is licensed under: MIT
